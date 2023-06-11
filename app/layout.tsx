@@ -1,11 +1,12 @@
 // 'use client';
 import "../app/globals.css";
-// import { SessionProvider } from "next-auth/react";
-import { getServerSession, } from "next-auth";
+import { SessionProvider } from "next-auth/react";
+import { getServerSession, } from "next-auth/next";
 import Login from "@/components/Login";
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { Session } from "next-auth";
 import SideBar from "@/components/Sidebar";
+import { NextAuthProvider } from "@/components/NextAuthProvider";
 
 export const metadata = {
   title: 'ChatGPT Clone',
@@ -25,8 +26,8 @@ export default async function RootLayout({
     <html lang="en">
       <head />
       <body>
-        {/* <div session={session}> */}
-        <div>
+        <NextAuthProvider session={session}>
+        {/* <div> */}
           {!session ? (
             <Login />
           ): (
@@ -42,7 +43,8 @@ export default async function RootLayout({
               <div className="bg-[#343541] flex-1">{children}</div>
             </div>
           )}
-        </div>
+        </NextAuthProvider>
+        {/* </div> */}
       </body>
     </html>
   )
