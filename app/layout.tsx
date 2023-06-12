@@ -27,7 +27,6 @@ export default async function RootLayout({
       <head />
       <body>
         <NextAuthProvider session={session}>
-        {/* <div> */}
           {!session ? (
             <Login />
           ): (
@@ -44,7 +43,7 @@ export default async function RootLayout({
             </div>
           )}
         </NextAuthProvider>
-        {/* </div> */}
+        
       </body>
     </html>
   )
