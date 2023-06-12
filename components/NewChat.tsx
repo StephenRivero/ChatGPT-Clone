@@ -6,11 +6,7 @@ import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 
-type Props = {
-  id: string;
-}
-
-function NewChat({id}: Props) {
+function NewChat() {
 
   const router = useRouter()
   const { data:session } = useSession();
