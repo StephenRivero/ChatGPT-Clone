@@ -27,7 +27,12 @@ export default async function handler(
 
     const message: Message = {
         text: response || "ChatGPT was unable to find an answer for that!",
-
+        createdAt: admin.firestore.Timestamp.now(),
+        user: {
+            _id: 'ChatGPT',
+            name: 'ChatGPT',
+            avatar: "https://links.papareact.com/89k",
+        }
     }
 
     res.status(200).json({ name: 'John Doe'})
